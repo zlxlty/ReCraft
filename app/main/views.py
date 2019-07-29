@@ -3,7 +3,7 @@
 @Author: Tianyi Lu
 @Date: 2019-07-05 17:27:28
 @LastEditors: Tianyi Lu
-@LastEditTime: 2019-07-30 04:18:55
+@LastEditTime: 2019-07-30 06:35:03
 '''
 import os
 import json
@@ -13,7 +13,7 @@ from . import main
 from resnet152_transfer import res_transfer
 from ..image_saver import saver
 from datetime import datetime
-from ..models import PictureSet
+from ..models import PictureSet, Video
 
 path1 = os.path.abspath('./app')
 
@@ -35,7 +35,9 @@ def index():
 
 @main.route('/video/<int:id>')
 def video(id):
-    return render_template('video.html', filename=filename)
+    v = Video.query.get_or_404(id)
+    materials = eval(v.materials)
+    return render_template('video.html', v=v, materials=materials)
 
 @main.route('/imageset/<dirname>', methods=['GET', 'POST'])
 def imageset(dirname):
@@ -55,9 +57,3 @@ def imageset(dirname):
     predict = json.loads(pictureset.prediction)
         
     return render_template('imageset.html', dirname=dirname, predict=predict)
-
-@main.route('/predict')
-def predict():
-    data_dir = os.path.join(path1, 'static/user_img/01')
-    predict = res_transfer.predict(data_dir, '2019-07-29-01')
-    return render_template('predict.html', predict=predict)
