@@ -9,13 +9,16 @@
 		  alt="First slide">
 		  <div class="carousel-caption d-none d-md-block">
 			  <div class="container">
-				  <div class="input-group input-group-lg">
-					  <input type="text" class="form-control" placeholder="Search" aria-label="Search"
-						  aria-describedby="basic-addon2">
-					  <div class="input-group-append">
-						  <span class="input-group-text" id="basic-addon2"><a href="#"> <img src="{{ url_for('static', filename='icon/Camera.png') }}" alt="camera" height="23px" ></a></span>
-					  </div>
-				  </div>
+					<img class="mb-5" src="{{url_for('static', filename='icon/logo.jpg')}}" alt="logo" height="160px" >
+					<div class="input-group input-group-lg mb-3">
+							<input type="text" class="form-control" placeholder="Search" aria-label="Recipient's username"
+							  aria-describedby="button-addon2">
+							<div class="input-group-append">
+							<button class="btn btn-light m-0 z-depth-0" type="button" id="button-addon2" data-toggle="modal" data-target="#exampleModalCenter">
+								<img src="{{url_for('static', filename='icon/Camera.png')}}" alt="camera" height="20px">
+							</button>
+							</div>
+						  </div>
 			  </div>
 				<!-- Evaluate all the activities happening last week -->
 		</div>
@@ -26,17 +29,17 @@
 {% block page_content %}
 <div class="row">
 <div class="col-9">
+	<section class="ml-6">
 	<div class="container">
 		
-		<hr class="my-5 mx-5">
+		<hr class="my-5">
 
 	</div>
 
-		<section>
 			<h3 style="color:gray;" class="h3 text-center mb-5">Video</h3>
 			<div class="mt-3">
 				<div class="row">
-					<div class="col ml-5 mr-2">
+					<div class="col mr-2">
 						<!-- Card -->
 						<div class="card">
 
@@ -106,36 +109,56 @@
 		</div>
 	</div>
 <div class="col-3">
-	<section>
+	<section class="mr-6">
 		<div class="container">
-			<hr class="my-5 mr-5">
+			<hr class="my-5">
 		</div>
-		<h3 style="color:gray;" class="h3 text-center mb-5 mr-5">News</h3>
-		<div class="ml-2 mr-5">
-				<!-- Card -->
-			<div class="card">
-
-				<!-- Card image -->
-				<div class="view overlay">
-				<img class="card-img-top" src="https://mdbootstrap.com/img/Mockups/Lightbox/Thumbnail/img%20(67).jpg" alt="Card image cap">
-				<a href="#!">
-					<div class="mask rgba-white-slight"></div>
-				</a>
-				</div>
-			
-				<!-- Card content -->
-				<div class="card-body">
-			
-				<!-- Title -->
-				<h4 class="card-title">Card title</h4>
-				<!-- Text -->
-
-			
-			</div>
-				
+		<h3 style="color:gray;" class="h3 text-center mb-5">News</h3>
+		<div class="ml-2">
+			<video width="320" height="240" controls="controls">
+				<source src="{{url_for('static', filename='video/Archive/ballon4.mp4')}}" type="video/mp4" />
+			</video>
 		</div>
 			<!-- Card -->
 	</section>
 </div>
 </div>
+
+<!-- Modal -->
+<form method='POST' action="#" enctype="multipart/form-data">
+
+	<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+	aria-hidden="true">
+
+	<!-- Add .modal-dialog-centered to .modal-dialog to vertically center the modal -->
+	<div class="modal-dialog modal-dialog-centered" role="document">
+
+
+		<div class="modal-content">
+		<div class="modal-header">
+			<h5 class="modal-title" id="exampleModalLongTitle">Image Uploader</h5>
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		<div class="modal-body">
+				<div class="input-group">
+					<div class="input-group-prepend">
+						<span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+					</div>
+					<div class="custom-file">
+						<input type="file" name="pictures" class="file-input" id="inputGroupFile01"
+							accept="image/jpeg, image/jpg, image/png" aria-describedby="inputGroupFileAddon01" multiple/>
+						<label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-mdb-color btn-md" data-dismiss="modal">Close</button>
+				<button type="submit" class="btn btn-dark-green btn-md">Submit</button>
+			</div>
+		</div>
+	</div>
+	</div>
+</form>
 {% endblock %}

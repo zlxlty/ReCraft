@@ -3,7 +3,7 @@
 @Author: Tianyi Lu
 @Date: 2019-07-29 17:03:08
 @LastEditors: Tianyi Lu
-@LastEditTime: 2019-07-29 19:07:27
+@LastEditTime: 2019-07-30 03:24:26
 '''
 # -*- coding: utf-8 -*-
 
@@ -22,7 +22,11 @@ import time
 import os
 import copy
 import json
-from .utils import load_valid_label
+
+if __name__ == '__main__':
+    from utils import load_valid_label
+else:
+    from .utils import load_valid_label
 
 data_transforms = transforms.Compose([
         # transforms.RandomResizedCrop(224),
@@ -37,9 +41,16 @@ def predict(data_dir, img_folder):
 
     valid_indexs = load_valid_label(os.path.join(path,'tag.txt'))
 
+    class ImageFolderWithPaths(datasets.ImageFolder):
+        def __getitem__(self, index):
+            original_tuple = super(ImageFolderWithPaths, self).__getitem__(index)
+            path = self.imgs[index][0]
+            tuple_with_path = (original_tuple + (path,))
+            return tuple_with_path
+
 
     # Load datasets
-    image_datasets = {x: datasets.ImageFolder(os.path.join(data_dir, x), data_transforms)
+    image_datasets = {x: ImageFolderWithPaths(os.path.join(data_dir, x), data_transforms)
                         for x in [img_folder]}
     dataloaders = {x: torch.utils.data.DataLoader(image_datasets[x], shuffle=False)
                         for x in [img_folder]}
@@ -60,9 +71,9 @@ def predict(data_dir, img_folder):
         reduced_idx2label = [idx2label[x] for x in valid_indexs]
 
     # Make prediction
-    res = []
+    res = {}
     with torch.no_grad():
-        for i, (inputs, labels) in enumerate(dataloaders[img_folder]):
+        for i, (inputs, labels, paths) in enumerate(dataloaders[img_folder]):
             inputs = inputs.to(device)
             labels = labels.to(device)
 
@@ -75,8 +86,9 @@ def predict(data_dir, img_folder):
             reduced_outputs = torch.from_numpy(np.array([reduced_np_outputs]))
             # print(outputs)
             _, preds = torch.max(reduced_outputs, 1)
+            print(paths)
 
-            res.append(reduced_idx2label[preds[0]])
+            res[paths[0].split('/')[-1]] = reduced_idx2label[preds[0]]
 
     return res
 

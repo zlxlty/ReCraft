@@ -3,6 +3,7 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 
 class Config:
+    IMG_PATH = 'static/user_img/01'
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'hard to guess string'
     MAIL_SERVER = os.environ.get('MAIL_SERVER', 'smtp.office365.com')
     MAIL_PORT = int(os.environ.get('MAIL_PORT', '587'))
