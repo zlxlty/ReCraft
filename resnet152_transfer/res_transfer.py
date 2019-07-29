@@ -3,7 +3,7 @@
 @Author: Tianyi Lu
 @Date: 2019-07-29 17:03:08
 @LastEditors: Tianyi Lu
-@LastEditTime: 2019-07-29 17:52:58
+@LastEditTime: 2019-07-29 19:07:27
 '''
 # -*- coding: utf-8 -*-
 
@@ -22,72 +22,28 @@ import time
 import os
 import copy
 import json
-import utils
+from .utils import load_valid_label
 
-data_transforms = {
-    'train': transforms.Compose([
+data_transforms = transforms.Compose([
         # transforms.RandomResizedCrop(224),
         # transforms.RandomHorizontalFlip(),
         transforms.ToTensor(),
         transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
-    ]),
-    'val': transforms.Compose([
-        transforms.Resize(256),
-        transforms.CenterCrop(224),
-        transforms.ToTensor(),
-        transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
-    ]),
-}
+    ])
 
-def visualize_model(model, classes, valid_indexs, num_images=6):
-    was_training = model.training
-    model.eval()
-    images_so_far = 0
-    fig = plt.figure()
 
-    with torch.no_grad():
-        for i, (inputs, labels) in enumerate(dataloaders['train']):
-            inputs = inputs.to(device)
-            labels = labels.to(device)
+def predict(data_dir, img_folder):
+    path = os.path.dirname(__file__)
 
-            outputs = model(inputs)
-
-            # extract valid outputs
-            np_outputs = outputs[0].numpy()
-            reduced_np_outputs = [np_outputs[x] for x in valid_indexs]
-            # print(reduced_np_outputs)
-            reduced_outputs = torch.from_numpy(np.array([reduced_np_outputs]))
-            # print(outputs)
-            _, preds = torch.max(reduced_outputs, 1)
-
-            for j in range(inputs.size()[0]):
-                images_so_far += 1
-                ax = plt.subplot(num_images//2, 2, images_so_far)
-                ax.axis('off')
-                ax.set_title('predicted: {}'.format(classes[preds[j]]))
-                utils.imshow(inputs.cpu().data[j])
-
-                if images_so_far == num_images:
-                    model.train(mode=was_training)
-                    return
-        model.train(mode=was_training)
-
-if __name__ == '__main__':
-
-    plt.ion()   # interactive mode
-    valid_indexs = utils.load_valid_label('tag.txt')
+    valid_indexs = load_valid_label(os.path.join(path,'tag.txt'))
 
 
     # Load datasets
-    data_dir = 'data'
-    image_datasets = {x: datasets.ImageFolder(os.path.join(data_dir, x),
-                                            data_transforms[x])
-                    for x in ['train', 'val']}
-    dataloaders = {x: torch.utils.data.DataLoader(image_datasets[x],
-                                                shuffle=True)
-                for x in ['train', 'val']}
-    dataset_sizes = {x: len(image_datasets[x]) for x in ['train', 'val']}
-    class_names = image_datasets['train'].classes
+    image_datasets = {x: datasets.ImageFolder(os.path.join(data_dir, x), data_transforms)
+                        for x in [img_folder]}
+    dataloaders = {x: torch.utils.data.DataLoader(image_datasets[x], shuffle=False)
+                        for x in [img_folder]}
+    dataset_sizes = {x: len(image_datasets[x]) for x in [img_folder]}
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
     # Get labels
@@ -98,19 +54,35 @@ if __name__ == '__main__':
     idx2label = []
     idx2class = {}
 
-    with open("imagenet_class_index.json", 'r') as read_file:
+    with open(os.path.join(path,'imagenet_class_index.json'), 'r') as read_file:
         class_idx = json.load(read_file)
         idx2label = [class_idx[str(k)][1] for k in range(len(class_idx))]
         reduced_idx2label = [idx2label[x] for x in valid_indexs]
-        # print(reduced_idx2label)
-        # with open('tag.txt', 'a') as f:
-        #     for i in range(len(idx2label)):
-        #         f.write(idx2label[i]+'\n')
-        visualize_model(model_ft, reduced_idx2label, valid_indexs,8)
 
-    plt.ioff()
-    plt.show()
+    # Make prediction
+    res = []
+    with torch.no_grad():
+        for i, (inputs, labels) in enumerate(dataloaders[img_folder]):
+            inputs = inputs.to(device)
+            labels = labels.to(device)
 
+            outputs = model_ft(inputs)
+
+            # extract valid outputs
+            np_outputs = outputs[0].numpy()
+            reduced_np_outputs = [np_outputs[x] for x in valid_indexs]
+            # print(reduced_np_outputs)
+            reduced_outputs = torch.from_numpy(np.array([reduced_np_outputs]))
+            # print(outputs)
+            _, preds = torch.max(reduced_outputs, 1)
+
+            res.append(reduced_idx2label[preds[0]])
+
+    return res
+
+if __name__ == '__main__':
+    res = predict('data', 'train')
+    print(res)
 
 
 
