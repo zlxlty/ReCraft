@@ -1,0 +1,55 @@
+.collapse-content .fa.fa-heart:hover {
+    color: #f44336 !important;
+}
+.collapse-content .fa.fa-share-alt:hover {
+    color: #0d47a1 !important;
+}
+
+.carousel-caption {
+    top: 70%;
+    transform: translateY(-70%);
+    bottom: initial;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+}
+
+.mt-6,
+.my-6 {
+  margin-top: 5rem !important;
+}
+
+.mr-6,
+.mx-6 {
+  margin-right: 5rem !important;
+}
+
+.mb-6,
+.my-6 {
+  margin-bottom: 5rem !important;
+}
+
+.ml-6,
+.mx-6 {
+  margin-left: 5rem !important;
+}
+
+.pt-6,
+.py-6 {
+  padding-top: 8rem !important;
+}
+
+.pr-6,
+.px-6 {
+  padding-right: 8rem !important;
+}
+
+.pb-6,
+.py-6 {
+  padding-bottom: 8rem !important;
+}
+
+.pl-6,
+.px-6 {
+  padding-left: 8rem !important;
+}

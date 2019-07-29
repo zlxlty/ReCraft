@@ -3,7 +3,7 @@
 @Author: Tianyi Lu
 @Date: 2019-07-05 17:27:28
 @LastEditors: Tianyi Lu
-@LastEditTime: 2019-07-29 19:02:53
+@LastEditTime: 2019-07-29 19:11:43
 '''
 import os
 from flask import render_template, session, redirect, url_for, current_app, flash, request, Markup, abort
@@ -15,8 +15,10 @@ path1 = os.path.abspath('./app')
 
 @main.route('/', methods=['GET', 'POST'])
 def index():
-    data_dir = os.path.join(path1, 'static/user_img/01')
-    print(data_dir)
-    predict = res_transfer.predict(data_dir, '2019-07-29-01')
-    print(predict)
     return render_template('index.html')
+
+@main.route('/predict')
+def predict():
+    data_dir = os.path.join(path1, 'static/user_img/01')
+    predict = res_transfer.predict(data_dir, '2019-07-29-01')
+    return render_template('predict.html', predict=predict)

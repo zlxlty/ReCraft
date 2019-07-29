@@ -1,31 +1,141 @@
 {% extends "base.html" %}
 
-{% block title %}{% endblock %}
-
-{% block page_content %}
-<!-- Card -->
-<div class="card">
-
-  <!-- Card image -->
-  <div class="view overlay">
-    <img class="card-img-top" src="https://mdbootstrap.com/img/Mockups/Lightbox/Thumbnail/img%20(67).jpg" alt="Card image cap">
-    <a href="#!">
-      <div class="mask rgba-white-slight"></div>
-    </a>
-  </div>
-
-  <!-- Card content -->
-  <div class="card-body">
-
-    <!-- Title -->
-    <h4 class="card-title">Card title</h4>
-    <!-- Text -->
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <!-- Button -->
-    <a href="#" class="btn btn-primary">Button</a>
-
-  </div>
-
+{% block title %}ReCraft - Home{% endblock %}
+{% block page_header%}
+<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img class="d-block w-100" src="{{url_for('static', filename='img/cover.jpg')}}"
+		  alt="First slide">
+		  <div class="carousel-caption d-none d-md-block">
+			  <div class="container">
+				  <div class="input-group input-group-lg">
+					  <input type="text" class="form-control" placeholder="Search" aria-label="Search"
+						  aria-describedby="basic-addon2">
+					  <div class="input-group-append">
+						  <span class="input-group-text" id="basic-addon2"><a href="#"> <img src="{{ url_for('static', filename='icon/Camera.png') }}" alt="camera" height="23px" ></a></span>
+					  </div>
+				  </div>
+			  </div>
+				<!-- Evaluate all the activities happening last week -->
+		</div>
+      </div>
+    </div>
 </div>
-<!-- Card -->
+{% endblock %}
+{% block page_content %}
+<div class="row">
+<div class="col-9">
+	<div class="container">
+		
+		<hr class="my-5 mx-5">
+
+	</div>
+
+		<section>
+			<h3 style="color:gray;" class="h3 text-center mb-5">Video</h3>
+			<div class="mt-3">
+				<div class="row">
+					<div class="col ml-5 mr-2">
+						<!-- Card -->
+						<div class="card">
+
+							<!-- Card image -->
+							<div class="view overlay">
+							<img class="card-img-top" src="https://mdbootstrap.com/img/Mockups/Lightbox/Thumbnail/img%20(67).jpg" alt="Card image cap">
+							<a href="#!">
+								<div class="mask rgba-white-slight"></div>
+							</a>
+							</div>
+						
+							<!-- Card content -->
+							<div class="card-body">
+						
+							<!-- Title -->
+							<h4 class="card-title">Card title</h4>
+							<!-- Text -->
+
+						
+							</div>
+						
+						</div>
+						<!-- Card -->
+					</div>
+					<div class="col mx-2">
+						<!-- Card -->
+						<div class="card">
+								<!-- Card image -->
+								<img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/images/43.jpg" alt="Card image cap">
+							
+								<!-- Card content -->
+								<div class="card-body">
+							
+									<!-- Title -->
+									<h4 class="card-title"><a>Card title</a></h4>
+									<!-- Text -->
+
+							
+								</div>
+							
+							</div>
+							<!-- Card -->
+					</div>
+					<div class="col mx-2">
+						<!-- Card -->
+						<div class="card">
+								<!-- Card image -->
+								<img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/images/43.jpg" alt="Card image cap">
+							
+								<!-- Card content -->
+								<div class="card-body">
+							
+									<h4 class="card-title"><a>Card title</a></h4>
+									<!-- Text -->
+
+							
+								</div>
+							
+							</div>
+							<!-- Card -->
+					</div>
+				</div>
+			</div>
+		</section>
+		<div class="container">
+			<hr class="my-5 mx-5">
+		</div>
+	</div>
+<div class="col-3">
+	<section>
+		<div class="container">
+			<hr class="my-5 mr-5">
+		</div>
+		<h3 style="color:gray;" class="h3 text-center mb-5 mr-5">News</h3>
+		<div class="ml-2 mr-5">
+				<!-- Card -->
+			<div class="card">
+
+				<!-- Card image -->
+				<div class="view overlay">
+				<img class="card-img-top" src="https://mdbootstrap.com/img/Mockups/Lightbox/Thumbnail/img%20(67).jpg" alt="Card image cap">
+				<a href="#!">
+					<div class="mask rgba-white-slight"></div>
+				</a>
+				</div>
+			
+				<!-- Card content -->
+				<div class="card-body">
+			
+				<!-- Title -->
+				<h4 class="card-title">Card title</h4>
+				<!-- Text -->
+
+			
+			</div>
+				
+		</div>
+			<!-- Card -->
+	</section>
+</div>
+</div>
 {% endblock %}
