@@ -50,32 +50,47 @@
 				<hr class="my-5">
 			</div>
 			<div class="align-middle">
-				<h3 style="color:gray;" class="h3 text-center mb-5"><img src="{{url_for('static', filename='icon/video.png')}}" alt="" width="30px"> Crafts</h3>
+				<h3 style="color:gray;" class="h3 text-center mb-5 mr-3"><img style="padding-bottom: 5px;" src="{{url_for('static', filename='icon/craft.png')}}" alt="" width="30px"> Crafts</h3>
 			</div>
 			<ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
 				<li class="nav-item">
-					<a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
-					aria-selected="true">Home</a>
+					<a style="color:gray" class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
+					aria-selected="true">Easy</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
-					aria-selected="false">Profile</a>
+					<a style="color:gray" class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
+					aria-selected="false">Medium</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact"
-					aria-selected="false">Contact</a>
+					<a style="color:gray" class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact"
+					aria-selected="false">Hard</a>
 				</li>
 			</ul>
+			<div class="my-2"></div>
 			<div class="tab-content" id="myTabContent">
-				<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">...</div>
-				<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
-				<div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
-			</div>
-			<div class="mt-3">
-				<div class="row">
-					{{macros.video_widget(videos)}}
+				<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+					<div class="mt-3">
+						<div class="row pt-3">
+							{{macros.video_widget(video_dict['easy'])}}
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+					<div class="mt-3">
+						<div class="row pt-3">
+							{{macros.video_widget(video_dict['medium'])}}
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+					<div class="mt-3">
+						<div class="row pt-3">
+							{{macros.video_widget(video_dict['hard'])}}
+						</div>
+					</div>
 				</div>
 			</div>
+			
 		</section>
 		<div class="container">
 			<hr class="my-5 mx-5">
@@ -87,7 +102,7 @@
 			<hr class="my-5">
 		</div>
 		<div class="align-middle">
-			<h3 style="color:gray;" class="h3 text-center mb-5"><img src="{{url_for('static', filename='icon/news.png')}}" alt="" width="30px"> News</h3>
+			<h3 style="color:gray;" class="h3 text-center mb-5"><img style="padding-bottom: 5px;" src="{{url_for('static', filename='icon/news.png')}}" alt="" width="30px"> News</h3>
 		</div>
 		<div class="row">
 			<div class="col-12">

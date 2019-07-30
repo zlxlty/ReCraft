@@ -3,25 +3,29 @@
 @Author: Tianyi Lu
 @Date: 2019-07-05 17:27:28
 @LastEditors: Tianyi Lu
-@LastEditTime: 2019-07-30 15:23:20
+@LastEditTime: 2019-07-30 20:05:11
 '''
 import os
 import json
 from flask import render_template, session, redirect, url_for, current_app, flash, request, Markup, abort
 from .. import db
 from . import main
-from flask_login import login_required
+from flask_login import login_required, current_user
 from resnet152_transfer import res_transfer
 from ..image_saver import saver
 from datetime import datetime
-from ..models import PictureSet, Video
+from ..models import PictureSet, Video, User, Comment
 from random import randint
 
 path1 = os.path.abspath('./app')
 
 @main.route('/', methods=['GET', 'POST'])
 def index():
-    videos = Video.query.all()[:9]
+    video_dict = {}
+    video_dict['easy'] = Video.query.filter_by(difficulties=0).all()[:9]
+    video_dict['medium'] = Video.query.filter_by(difficulties=1).all()[:9]
+    video_dict['hard'] = Video.query.filter_by(difficulties=2).all()[:9]
+
 
     slogan = current_app.config['SLOGAN'][randint(0, len(current_app.config['SLOGAN'])-1)]
     if request.method == 'POST':
@@ -39,14 +43,21 @@ def index():
 
         return redirect(url_for('main.imageset', dirname=dt_string))
         
-    return render_template('index.html', slogan=slogan, videos=videos)
+    return render_template('index.html', slogan=slogan, video_dict=video_dict)
 
-@main.route('/video/<int:id>')
+@main.route('/video/<int:id>', methods=['GET', 'POST'])
 @login_required
 def video(id):
     v = Video.query.get_or_404(id)
+    comments = Comment.query.filter_by(video_id=id).all()
     materials = eval(v.materials)
-    return render_template('video.html', v=v, materials=materials)
+    if request.method == 'POST':
+        content = request.form['content']
+        c = Comment(author=current_user, video=v, content=content)
+        db.session.add(c)
+        db.session.commit()
+        return redirect(url_for('main.video', id=id))
+    return render_template('video.html', v=v, materials=materials, comments=comments)
 
 @main.route('/search')
 @login_required
@@ -62,6 +73,11 @@ def search():
 
     return render_template('search.html', keywords_list=keywords_list, res_videos=res_videos)
 
+@main.route('/profile/<int:id>')
+@login_required
+def profile(id):
+    user = User.query.get_or_404(id)
+    return render_template('profile.html', user=user, id=id)
 
 @main.route('/imageset/<dirname>', methods=['GET', 'POST'])
 @login_required

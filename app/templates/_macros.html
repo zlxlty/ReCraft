@@ -44,3 +44,24 @@
 {% endif %}
 
 {% endmacro %}
+
+{% macro comment_widget(comments) %}
+
+{% if comments %}
+    {% for comment in comments %}
+    <div class="media my-3">
+        
+        <img class="d-flex mr-3" src="{{url_for('static', filename='avatar/sky.jpeg')}}" alt="Generic placeholder image" width='50px'>
+        <div class="media-body">
+          <h5 class="mt-0 font-weight-bold">{{comment.author.username}}</h5>
+          {{comment.content}}
+        </div>
+        <div class="float-right">
+                {{comment.get_time()}}
+            </div>
+      </div>
+    <hr>
+    {% endfor %}
+{% endif %}
+
+{% endmacro %}
