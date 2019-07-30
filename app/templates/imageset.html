@@ -3,18 +3,20 @@
 
 {% block page_content %}
 <div class="container pt-5 mb-6">
-    <h3 style="color:gray;" class="h3 mb-3">Predictions</h3>
-    <hr>
-    <div class="row">
-    {% for k, v in predict.items() %}
-        <div class="col-4 text-center">
-            <img class="rounded img-fluid" src="{{url_for('static', filename='user_img/01/%s/img/%s'%(dirname, k))}}" alt="img" width="300px">
-            <h3 style="color:gray;" class="h5 mb-4 mt-3">{{v}}</h3>
-            
+    <form method='POST' action="#" enctype="multipart/form-data">
+        <h3 style="color:gray;" class="h3 mb-3">Predictions</h3>
+        <hr>
+        <div class="row">
+        {% for k, v in predict.items() %}
+            <div class="col-4 text-center">
+                <img class="rounded img-fluid" src="{{url_for('static', filename='user_img/01/%s/img/%s'%(dirname, k))}}" alt="img" width="300px">
+                <h3 style="color:gray;" class="h5 mb-4 mt-3">{{v}}</h3>
+                
+            </div>
+        {% endfor %}
         </div>
-    {% endfor %}
-    </div>
-    <hr>
-    <button type="button" class="btn btn-primary btn-lg btn-block">Get Videos!</button>
+        <hr>
+        <button type="submit" class="btn btn-primary btn-lg btn-block">Get Videos!</button>
+    </form>
 </div>
 {% endblock %}

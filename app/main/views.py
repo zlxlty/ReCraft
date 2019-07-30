@@ -3,7 +3,7 @@
 @Author: Tianyi Lu
 @Date: 2019-07-05 17:27:28
 @LastEditors: Tianyi Lu
-@LastEditTime: 2019-07-30 06:35:03
+@LastEditTime: 2019-07-30 08:33:24
 '''
 import os
 import json
@@ -29,7 +29,6 @@ def index():
             saver(dt_string, picture)
 
         return redirect(url_for('main.imageset', dirname=dt_string))
-
         
     return render_template('index.html')
 
@@ -38,6 +37,18 @@ def video(id):
     v = Video.query.get_or_404(id)
     materials = eval(v.materials)
     return render_template('video.html', v=v, materials=materials)
+
+# @main.route('/search')
+# def search():
+
+#     res_videos = []
+#     keywords = request.args.get('keywords') or ''
+#     keywords_list = keywords.split(' ')
+#     for keyword in keywords_list:
+#         res_videos.append([v for v in Video.query.msearch(keyword, fields=['materials', 'title']).all() if v not in res_videos])
+
+#     return render_template('search.html', keywords_list=keywords_list, res_videos=res_videos)
+
 
 @main.route('/imageset/<dirname>', methods=['GET', 'POST'])
 def imageset(dirname):
@@ -55,5 +66,11 @@ def imageset(dirname):
         db.session.commit()
     
     predict = json.loads(pictureset.prediction)
+
+    # if request == 'POST':
+    #     keywords = ''.join([str(x)+' ' for x in predict])
+    #     print(keywords)
+    #     return redirect(url_for('main.search', keywords=keywords))
+        
         
     return render_template('imageset.html', dirname=dirname, predict=predict)
