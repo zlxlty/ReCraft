@@ -3,13 +3,14 @@
 @Author: Tianyi Lu
 @Date: 2019-07-05 17:27:28
 @LastEditors: Tianyi Lu
-@LastEditTime: 2019-07-30 14:58:52
+@LastEditTime: 2019-07-30 15:23:20
 '''
 import os
 import json
 from flask import render_template, session, redirect, url_for, current_app, flash, request, Markup, abort
 from .. import db
 from . import main
+from flask_login import login_required
 from resnet152_transfer import res_transfer
 from ..image_saver import saver
 from datetime import datetime
@@ -41,12 +42,14 @@ def index():
     return render_template('index.html', slogan=slogan, videos=videos)
 
 @main.route('/video/<int:id>')
+@login_required
 def video(id):
     v = Video.query.get_or_404(id)
     materials = eval(v.materials)
     return render_template('video.html', v=v, materials=materials)
 
 @main.route('/search')
+@login_required
 def search():
 
     res_videos = []
@@ -61,6 +64,7 @@ def search():
 
 
 @main.route('/imageset/<dirname>', methods=['GET', 'POST'])
+@login_required
 def imageset(dirname):
     path = os.path.join(current_app.root_path, current_app.config['IMG_PATH'])
     if not os.path.exists(path):

@@ -3,6 +3,7 @@
 {% block title %}Islander - unconfirmed{% endblock %}
 
 {% block page_content %}
+<div class="container z-depth-1" style="width: 500px; margin-top: 120px; margin-bottom:50px;padding-top: 20px; padding-bottom: 20px;">
 <div class="page-header">
         <h1>
             Hello, {{ current_user.username }}!
@@ -17,4 +18,5 @@
             <a href="{{ url_for('auth.resend_confirmation') }}">Click here</a>
         </p>
     </div>
+</div>
 {% endblock %}

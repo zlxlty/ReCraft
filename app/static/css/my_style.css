@@ -87,3 +87,33 @@ footer{
     height: 300px;
     margin-top: -300px;
 }
+
+#reject-circle {
+  width: 15px;
+  height: 15px;
+  background: rgba(255, 0, 0, 0.4);
+  -moz-border-radius: 50px;
+  -webkit-border-radius: 50px;
+  border-radius: 50px;
+  text-align: right;
+}
+
+#pending-circle {
+  width: 15px;
+  height: 15px;
+  background: rgba(255, 255, 0, 0.4);
+  -moz-border-radius: 50px;
+  -webkit-border-radius: 50px;
+  border-radius: 50px;
+  text-align: right;
+}
+
+#approved-circle {
+  width: 15px;
+  height: 15px;
+  background: rgb(0, 255, 0, 0.4);
+  -moz-border-radius: 50px;
+  -webkit-border-radius: 50px;
+  border-radius: 50px;
+  text-align: right;
+}

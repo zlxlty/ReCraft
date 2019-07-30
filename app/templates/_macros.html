@@ -8,7 +8,18 @@
 
             <!-- Card image -->
             <div class="view overlay">
-            <img class="card-img-top" src="{{url_for('static', filename='video_cover/%s' % video.cover)}}" alt="Card image cap">
+            <div style="position: relative;">
+                <img class="card-img-top" src="{{url_for('static', filename='video_cover/%s' % video.cover)}}" alt="Card image cap">
+                <div style="position:absolute; z-index:2; right:15px; top:15px">
+                    {% if video.difficulties == 2 %}
+                        <div id="reject-circle"></div>
+                    {% elif video.difficulties == 1 %}
+                        <div id="pending-circle"></div>
+                    {% elif video.difficulties == 0 %}
+                        <div id="approved-circle"></div>
+                    {% endif %}
+                </div>
+            </div>
             <a href="{{url_for('main.video', id=video.id)}}">
                 <div class="mask flex-center rgba-orange-strong">
                     <h5 class="white-text text-center"> {{video.get_materials()}}</h5>

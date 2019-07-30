@@ -8,7 +8,16 @@
         <video width="1000" controls="controls">
             <source src="{{url_for('static', filename='video/%s'%v.dirname)}}" type="video/mp4" />
         </video>
-    </div>   
+    </div>
+    <hr>
+    <div class="float-right">
+        <div class="row">
+            <div class="mr-2" id="approved-circle" {% if v.difficulties == 0 %}style="background:rgba(0, 255, 0, 1);"{% else %}style="background:rgba(0, 255, 0, 0.1);"{% endif %}></div>
+            <div class="mr-2" id="pending-circle" {% if v.difficulties == 1 %}style="background:rgba(255, 255, 0, 1);"{% else %}style="background:rgba(255, 255, 0, 0.1);"{% endif %}></div>
+            <div class="mr-4" id="reject-circle" {% if v.difficulties == 2 %}style="background:rgba(255, 0, 0, 1);"{% else %}style="background:rgba(255, 0, 0, 0.1);"{% endif %}></div>
+        </div>
+    </div>
     <h5 class="mt-3"><strong>Materials:</strong> {{v.get_materials()}}</h5>
+    <hr>
 </div>
 {% endblock %}

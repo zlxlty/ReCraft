@@ -18,26 +18,34 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent-555">
         <ul class="navbar-nav ml-auto nav-flex-icons">
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
+            {% if current_user.is_authenticated %}
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
-                <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-5.jpg" class="rounded-circle z-depth-0"
+                <img src="{{url_for('static', filename='avatar/sky.jpeg')}}" class="rounded-circle z-depth-0"
                 alt="avatar image" height="35">
             </a>
-            <div class="dropdown-menu dropdown-menu-right dropdown-default"
-                aria-labelledby="navbarDropdownMenuLink-333">
-                <a class="dropdown-item" href="#">Tags</a>
+            <div class="dropdown-menu dropdown-menu-right dropdown-default text-center"
+            aria-labelledby="navbarDropdownMenuLink-333">
                 <a class="dropdown-item" href="#">Message</a>
                 <a class="dropdown-item" href="#">Profile</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="{{ url_for('auth.logout') }}">Log Out</a>
             </div>
-        </li>
-        <!-- <li class="nav-item avatar">
-            <a class="nav-link p-0" href="#">
-            <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-5.jpg" class="rounded-circle z-depth-0"
-                alt="avatar image" height="35">
-            </a>
-        </li> -->
+            </li>
+            <!-- <li class="nav-item avatar">
+                <a class="nav-link p-0" href="#">
+                    <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-5.jpg" class="rounded-circle z-depth-0"
+                    alt="avatar image" height="35">
+                </a>
+            </li> -->
+            {% else %}
+            <li class="nav-item">
+                <a class="nav-link active" href="{{ url_for('auth.login') }}">Log In</a>
+            </li>
+            {% endif %}
         </ul>
+
     </div>
 </nav>
 <div class="mb-5"></div>
