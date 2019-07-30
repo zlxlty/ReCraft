@@ -1,6 +1,7 @@
 from flask_migrate import Migrate, upgrade
 from dotenv import load_dotenv
 from app import create_app, db
+from app import search
 from app.models import Video, PictureSet, User, Comment
 import os
 from random import randint
@@ -20,3 +21,5 @@ def deploy():
     for v in Video.query.all():
         v.difficulties = randint(0,2)
     db.session.commit()
+    search.create_index()
+    search.update_index()

@@ -1,20 +1,67 @@
-# Hackthon
-## Learning Style
-* **Definition**: Learning styles are those educational conditions under which a student is most likely to learn (Stewart and Felicetti, 1992).
-* **Focus**: How users are preferred to learn
-* **Warning**: We should not divide the population into a set of categories (i.e., visual and auditory learners). The system should to be `flexable`.
+ReCraft
+=====
 
-### Exist opinions on learning style
-* There is disagreement on how to best measure learning styles 
-* That is, most researchers agree that we do have various learning styles and preferences, however, the research tends to agree that it is relatively unimportant when designing learning programs. 
-* Rather it is far more important to `match the presentation with the nature of the subject`, such as providing correct learning methods, strategies, and context; rather than `matching individual preferences`
-* “just varying delivery style may not be enough and... the unit of analysis must be `the individual` rather than the group.”
-* Learning styles for a group are unimportant, while learning styles for an `individual` are key components
+### ReCraft is a project for TechX 2019 Hackathon 
 
-### How to use learning style info
-* Firstly, instructional strategies should first be determined on the basis of the type of content to be taught or the goals of the instruction (`the content-by-strategy interactions`).
-* Secondarily, `learner styles and preferences` are then used to adjust or fine-tune these fundamental learning strategies. 
-* Finally, `content-by-strategy interactions` take precedence over learning-style-by-strategy interactions regardless of the instructional style or philosophy of the instructional situation. 
-* Choosing the best learning method is part of metalearning—being aware of and taking control of one's learning (Biggs, 1985). This concept is related to metacognition.
-*  setting goals, choosing appropriate strategies, and monitoring progress 
-*  Using learning styles as a tool to help learners learn-to-learn, rather that an instrument for stereotyping them into using a particular style, could help them to target one or more styles to fit a strategy for a particular learning need.
+## Content
+- [ReCraft](#ReCraft)
+    - [ReCraft is a project for TechX 2019 Hackathon](#ReCraft-is-a-project-for-TechX-2019-Hackathon)
+  - [Content](#Content)
+  - [Getting_Started](#GettingStarted)
+    - [Prerequisites](#Prerequisites)
+    - [Installing](#Installing)
+
+***
+## Getting_Started
+### Prerequisites
+* Python 3.6.x (3.7.x is not supported)
+  * If you haven't installed anaconda on your computer, here is the URL link to [Download Anaconda](https://www.anaconda.com/download)
+* Virtualenv
+* Mac OS or Linux
+```
+$ sudo apt-get install python3-venv
+```
+### Installing
+1. Click the top-right `Fork` button and fork my repo to your own repo
+2. Clone your repo to your local computer
+```
+$ git clone https://github.com/<your_username>/Islandr.git
+$ cd Islandr
+```
+3. Create Virtualenv
+```
+$ python3 -m venv venv
+```
+4. Add FLASK_APP to your activate shell file
+```
+$ vim venv/bin/activate
+```
+<p style="text-indent:2em;">Add this line at the buttom of activate file</p>
+
+```shell
+export FLASK_APP=recraft.py
+```
+<p style="text-indent:2em;">Save and exit the file by pressing `Contrl+C` and `:wq`</p>  
+
+5. Activate Virtualevn and install dependencies
+```
+(venv)$ source venv/bin/activate
+(venv)$ pip install -r requirements.txt
+```
+6. Create index for search function and create database
+```
+(venv)$ flask deploy
+```
+7. Run your flask app
+```
+(venv)$ flask run
+```
+8. Go to http://127.0.0.1:5000/ and see the app running
+****
+
+|Author|zlxlty|
+|---|---|
+|E-mail|skylty01@gmail.com|
+
+
+****
