@@ -4,32 +4,19 @@
 
 {% block head %}
 {{ super() }}
-<link rel="shortcut icon" href="{{ url_for('static', filename='islander.ico') }}" type="image/x-icon">
-<link rel="icon" href="{{ url_for('static', filename='islander.ico') }}" type="image/x-icon">
+<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+<link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
 {% endblock %}
 
 {% block navbar %}
 <!--Navbar -->
 <nav class="mb-1 navbar navbar-expand-lg navbar-dark default-color lighten-1 fixed-top px-6">
-    <a class="navbar-brand" href="{{url_for('main.index')}}"><strong>ReCraft</strong></a>
+    <a class="navbar-brand" href="{{url_for('main.index')}}"><img src="{{url_for('static', filename='icon/logo1.jpg')}}" alt="logo" width="160px"> </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-555"
         aria-controls="navbarSupportedContent-555" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent-555">
-        <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-            <a class="nav-link" href="{{url_for('main.index')}}">Home
-            <span class="sr-only">(current)</span>
-            </a>
-        </li>
-        <li class="nav-item active">
-            <a class="nav-link" href="#">Craft</a>
-        </li>
-        <li class="nav-item active">
-            <a class="nav-link" href="#">Forum</a>
-        </li>
-        </ul>
         <ul class="navbar-nav ml-auto nav-flex-icons">
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"

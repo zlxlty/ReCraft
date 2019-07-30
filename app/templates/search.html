@@ -1,6 +1,12 @@
 {% extends "base.html" %}
+{% import "_macros.html" as macros %}
 {% block title %}ReCraft - Search{% endblock %}
 {% block page_content %}
-{{keywords_list}}
-{{res_videos}}
+<div class="container pt-5 mb-6">
+    <h3 style="color:gray;">{% for x in keywords_list %} {{x}} /{% endfor %}</h3>
+    <hr>
+    <div class="row">
+        {{macros.video_widget(res_videos)}}
+    </div>
+</div>
 {% endblock %}

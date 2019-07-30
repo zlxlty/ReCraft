@@ -27,6 +27,14 @@ class Video(db.Model):
     dirname = db.Column(db.String(64))
     materials = db.Column(db.String(256), index=True)
 
+    def get_materials(self):
+        res = ''
+        materials = eval(self.materials)
+        for material in materials:
+            res += (str(material)+', ')
+
+        return res
+
     @staticmethod
     def load_video():
         current_path = os.path.dirname(__file__)

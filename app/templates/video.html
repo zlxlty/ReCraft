@@ -9,6 +9,6 @@
             <source src="{{url_for('static', filename='video/%s'%v.dirname)}}" type="video/mp4" />
         </video>
     </div>   
-    <h5 class="mt-3"><strong>Materials:</strong> {% for x in materials %}<span> {{x}}, </span>{% endfor %}</h5>
+    <h5 class="mt-3"><strong>Materials:</strong> {{v.get_materials()}}</h5>
 </div>
 {% endblock %}

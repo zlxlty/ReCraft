@@ -1,0 +1,35 @@
+{% macro video_widget(videos) %}
+{% if videos %}
+    {% for video in videos %}
+    <div class="col-4">
+
+    <!-- Card -->
+    <div class="card mb-4 z-depth-0 border">
+
+            <!-- Card image -->
+            <div class="view overlay">
+            <img class="card-img-top" src="{{url_for('static', filename='video_cover/%s' % video.cover)}}" alt="Card image cap">
+            <a href="{{url_for('main.video', id=video.id)}}">
+                <div class="mask flex-center rgba-orange-strong">
+                    <h5 class="white-text text-center"> {{video.get_materials()}}</h5>
+                </div>
+            </a>
+            </div>
+        
+            <!-- Card content -->
+            <div class="card-body">
+        
+            <!-- Title -->
+            <h5 style="color: gray;" class="card-title text-center"><strong>{{video.title}}</strong></h5>
+            <!-- Text -->
+
+        
+            </div>
+        
+    </div>
+        <!-- Card -->
+    </div>
+    {% endfor %}
+{% endif %}
+
+{% endmacro %}

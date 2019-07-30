@@ -4,6 +4,13 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 class Config:
     IMG_PATH = 'static/user_img/01'
+    SLOGAN = ['What will you ReCraft today?',
+              'Have you channeled creativity today?',
+              'ReCraft something to show the world!',
+              'Some days are for ReCrafting!',
+              'Wind down with some ReCrafting tonight.',
+              'ReCraft this morning.',
+              'How will ReCrafting help you today?']
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'hard to guess string'
     MAIL_SERVER = os.environ.get('MAIL_SERVER', 'smtp.office365.com')
     MAIL_PORT = int(os.environ.get('MAIL_PORT', '587'))

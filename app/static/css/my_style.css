@@ -37,7 +37,7 @@
 
 .pt-6,
 .py-6 {
-  padding-top: 8rem !important;
+  padding-top: 7rem !important;
 }
 
 .pr-6,
@@ -47,7 +47,7 @@
 
 .pb-6,
 .py-6 {
-  padding-bottom: 8rem !important;
+  padding-bottom: 7rem !important;
 }
 
 .pl-6,
@@ -55,6 +55,24 @@
   padding-left: 8rem !important;
 }
 
+.px-7 {
+  padding-left: 12rem !important;
+  padding-right: 12rem !important;
+
+}
+
+.ml-7 {
+  margin-left: 12rem !important;
+
+}
+
+.mr-7 {
+  margin-right: 12rem !important;
+
+}
+.custom_file {
+  overflow: hidden;
+}
 html,body{
     height: 100%;
     margin: 0;

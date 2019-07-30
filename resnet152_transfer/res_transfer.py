@@ -3,7 +3,7 @@
 @Author: Tianyi Lu
 @Date: 2019-07-29 17:03:08
 @LastEditors: Tianyi Lu
-@LastEditTime: 2019-07-30 03:24:26
+@LastEditTime: 2019-07-30 11:53:33
 '''
 # -*- coding: utf-8 -*-
 
@@ -85,10 +85,14 @@ def predict(data_dir, img_folder):
             # print(reduced_np_outputs)
             reduced_outputs = torch.from_numpy(np.array([reduced_np_outputs]))
             # print(outputs)
-            _, preds = torch.max(reduced_outputs, 1)
-            print(paths)
+            reduced_outputs = reduced_outputs.cpu().numpy().reshape(-1)
+            print(reduced_outputs.shape)
+            preds = reduced_outputs.argsort()[-5:][::-1]
+            # _, preds = torch.max(reduced_outputs, 1)
+            print(preds)
 
-            res[paths[0].split('/')[-1]] = reduced_idx2label[preds[0]]
+            res[paths[0].split('/')[-1]] = [reduced_idx2label[pred] for pred in preds]
+            # reduced_idx2label[preds[0]]
 
     return res
 

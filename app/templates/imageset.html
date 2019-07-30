@@ -7,10 +7,15 @@
         <h3 style="color:gray;" class="h3 mb-3">Predictions</h3>
         <hr>
         <div class="row">
-        {% for k, v in predict.items() %}
+        {% for k, vs in predict.items() %}
             <div class="col-4 text-center">
                 <img class="rounded img-fluid" src="{{url_for('static', filename='user_img/01/%s/img/%s'%(dirname, k))}}" alt="img" width="300px">
-                <h3 style="color:gray;" class="h5 mb-4 mt-3">{{v}}</h3>
+                <select class="browser-default custom-select my-3" name="{{k}}" style="width: 300px;">
+                    {% for v in vs %}
+                    <option value="{{v}}">{{v}}</option>
+                    {% endfor %}
+
+                </select>
                 
             </div>
         {% endfor %}
