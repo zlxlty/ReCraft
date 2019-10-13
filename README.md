@@ -1,17 +1,37 @@
+<!--
+ * @Description: Edit
+ * @Author: Tianyi Lu
+ * @Date: 2019-08-01 17:16:32
+ * @LastEditors: Tianyi Lu
+ * @LastEditTime: 2019-10-13 21:42:20
+ -->
 ReCraft
 =====
+### ReCraft is a project for TechX 2019 Hackathon <!-- omit in toc -->
+<div align=center><img src="pic/3.jpeg" width=1000px/></div>
 
-### ReCraft is a project for TechX 2019 Hackathon 
-
-## Content
+## Content <!-- omit in toc -->
 - [ReCraft](#ReCraft)
-    - [ReCraft is a project for TechX 2019 Hackathon](#ReCraft-is-a-project-for-TechX-2019-Hackathon)
-  - [Content](#Content)
+  - [Main Functions](#Main-Functions)
   - [Getting_Started](#GettingStarted)
     - [Prerequisites](#Prerequisites)
     - [Installing](#Installing)
 
+- [ ] todo
+
 ***
+## Main Functions
+<div align=center><img src="pic/2.jpeg" width=1000px/></div>
+Main Page
+<div align=center><img src="pic/5.jpeg" width=1000px/></div>
+Image Identification
+<div align=center><img src="pic/4.jpeg" width=1000px/></div>
+Get Videos according to the tags identified
+<div align=center><img src="pic/0.jpeg" width=1000px/></div>
+Learn Tutorials and share thoughts
+<div align=center><img src="pic/1.jpeg" width=1000px/></div>
+Receive analysis for recycling behaviors
+
 ## Getting_Started
 ### Prerequisites
 * Python 3.6.x (3.7.x is not supported)
@@ -59,9 +79,12 @@ export FLASK_APP=recraft.py
 8. Go to http://127.0.0.1:5000/ and see the app running
 ****
 
-|Author|zlxlty|
-|---|---|
-|E-mail|skylty01@gmail.com|
+| Author |             zlxlty |
+| :----- | -----------------: |
+| E-mail | skylty01@gmail.com |
 
+$$
+f(x) = \int_{-\infty}^\infty \hat{f(x)}, e^{2 \pi i x}
+$$
 
 ****

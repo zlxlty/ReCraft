@@ -18,6 +18,7 @@ class Comment(db.Model):
     content = db.Column(db.Text)
     timestamp = db.Column(db.DateTime(), default=datetime.now)
     video_id = db.Column(db.Integer, db.ForeignKey('videos.id'))
+    #TODO add picture upload function
 
     def get_time(self):
         return self.timestamp.strftime("%Y-%m-%d-%H-%M-%S")

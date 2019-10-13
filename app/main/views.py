@@ -3,7 +3,7 @@
 @Author: Tianyi Lu
 @Date: 2019-07-05 17:27:28
 @LastEditors: Tianyi Lu
-@LastEditTime: 2019-08-01 16:58:17
+@LastEditTime: 2019-08-02 08:47:52
 '''
 import os
 import json
@@ -21,6 +21,7 @@ path1 = os.path.abspath('./app')
 
 @main.route('/', methods=['GET', 'POST'])
 def index():
+    flash('Hello')
     video_dict = {}
     video_dict['easy'] = Video.query.filter_by(difficulties=0).all()[:9]
     video_dict['medium'] = Video.query.filter_by(difficulties=1).all()[:9]
@@ -59,6 +60,11 @@ def video(id):
         return redirect(url_for('main.video', id=id))
     return render_template('video.html', v=v, materials=materials, comments=comments)
 
+@main.route('/video/upload', methods=['GET', 'POST'])
+@login_required
+def video_upload():
+    return render_template('video_upload.html')
+
 @main.route('/search')
 @login_required
 def search():
@@ -66,6 +72,7 @@ def search():
     res_videos = []
     keywords = request.args.get('keywords') or ''
     keywords_list = keywords.split(' ')
+    keywords_list = list(set(keywords_list))
     for keyword in keywords_list:
         videos = [v for v in Video.query.msearch(keyword, fields=['materials', 'title']).all() if v not in res_videos]
         for video in videos:
