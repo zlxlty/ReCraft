@@ -57,7 +57,7 @@ termcolor==1.1.0
 torch==1.1.0
 torchvision==0.3.0
 tzlocal==1.5.1
-urllib3==1.25.3
+urllib3==1.26.5
 visitor==0.1.3
 webencodings==0.5.1
 Werkzeug==0.12.2
