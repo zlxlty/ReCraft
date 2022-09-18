@@ -11,26 +11,31 @@ ReCraft
 <div align=center><img src="pic/3.jpeg" width=1000px/></div>
 
 ## Content <!-- omit in toc -->
-- [ReCraft](#ReCraft)
-  - [Main Functions](#Main-Functions)
-  - [Getting_Started](#GettingStarted)
-    - [Prerequisites](#Prerequisites)
-    - [Installing](#Installing)
+- [ReCraft](#recraft)
+  - [Main Functions](#main-functions)
+    - [Main Page](#main-page)
+    - [Image Identification](#image-identification)
+    - [Get Videos according to the tags identified](#get-videos-according-to-the-tags-identified)
+    - [Learn Tutorials and share thoughts](#learn-tutorials-and-share-thoughts)
+    - [Receive analysis for recycling behaviors](#receive-analysis-for-recycling-behaviors)
+  - [Getting_Started](#getting_started)
+    - [Prerequisites](#prerequisites)
+    - [Installing](#installing)
 
 - [ ] todo
 
 ***
 ## Main Functions
 <div align=center><img src="pic/2.jpeg" width=1000px/></div>
-Main Page
+### Main Page
 <div align=center><img src="pic/5.jpeg" width=1000px/></div>
-Image Identification
+### Image Identification
 <div align=center><img src="pic/4.jpeg" width=1000px/></div>
-Get Videos according to the tags identified
+### Get Videos according to the tags identified
 <div align=center><img src="pic/0.jpeg" width=1000px/></div>
-Learn Tutorials and share thoughts
+### Learn Tutorials and share thoughts
 <div align=center><img src="pic/1.jpeg" width=1000px/></div>
-Receive analysis for recycling behaviors
+### Receive analysis for recycling behaviors
 
 ## Getting_Started
 ### Prerequisites
@@ -79,12 +84,8 @@ export FLASK_APP=recraft.py
 8. Go to http://127.0.0.1:5000/ and see the app running
 ****
 
-| Author |             zlxlty |
+| Author |             Tianyi Lu |
 | :----- | -----------------: |
-| E-mail | skylty01@gmail.com |
-
-$$
-f(x) = \int_{-\infty}^\infty \hat{f(x)}, e^{2 \pi i x}
-$$
+| E-mail | lus2@carleton.edu |
 
 ****
