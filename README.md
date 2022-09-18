@@ -26,16 +26,20 @@ ReCraft
 
 ***
 ## Main Functions
-<div align=center><img src="pic/2.jpeg" width=1000px/></div>
 ### Main Page
-<div align=center><img src="pic/5.jpeg" width=1000px/></div>
+<div align=center><img src="pic/2.jpeg" width=1000px/></div>
+
 ### Image Identification
-<div align=center><img src="pic/4.jpeg" width=1000px/></div>
+<div align=center><img src="pic/5.jpeg" width=1000px/></div>
+
 ### Get Videos according to the tags identified
-<div align=center><img src="pic/0.jpeg" width=1000px/></div>
+<div align=center><img src="pic/4.jpeg" width=1000px/></div>
+
 ### Learn Tutorials and share thoughts
-<div align=center><img src="pic/1.jpeg" width=1000px/></div>
+<div align=center><img src="pic/0.jpeg" width=1000px/></div>
+
 ### Receive analysis for recycling behaviors
+<div align=center><img src="pic/1.jpeg" width=1000px/></div>
 
 ## Getting_Started
 ### Prerequisites
